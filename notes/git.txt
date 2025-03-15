@@ -1,0 +1,186 @@
+Git introduction
+
+Git is a distributed version control system used for tracking changes in source code during software development.
+
+Remote Repository:
+
+A remote repository is a Git repository hosted on a remote server or a code hosting platform like GitHub, GitLab, or Bitbucket.
+It acts as a centralized location for collaborating changes from multiple developers, where multiple developers can push and pull changes to keep the repository in sync.
+We can not make any changes directly to a remote repository and a valid user with proper access can push changes to remote repo from only local repo.
+Local Repository:
+
+A local repository is a copy of a Git repository that resides on your local machine.
+It contains the complete copy of the repo repository, including all branches, commits, files etc.
+The local repository allows you to make changes, commit them, switch between branches, and perform Git operations without needing a live network connection to remote repo.
+You can create a local repository by initialising a new repository with git init or cloning an existing repository using git clone.
+ 
+ #To get a local repo / to download/clone a remote repo 
+     git clone <url_of_the_remote_repository>
+
+
+git architecture
+
+
+
+git status
+
+The git status command in Git shows the current state of your working directory and staging area. It helps you to track changes and know which files are modified, staged for commit, or untracked. Here's an overview of the possible outputs:
+
+Untracked files: Files that aren't being tracked by Git.
+Changes not staged for commit: Files that have been modified but not yet added to the staging area.
+Changes to be committed: Files that are staged and ready to be committed.
+Branch information: It may also show which branch you're currently on and if you're ahead or behind any remote branch.
+git log
+
+git log is used to view all commits history of a Git repository.
+It displays a list of commits starting from the most recent commit on top.
+The commit history provides essential information about the changes made to the repository such as, 
+     commit messages, authors, dates, and unique identifiers (commit hash/id).
+git add
+
+Adds changes to the staging area.
+This is where you can review your changes before committing them to your local repository.
+ # Add all changes to the staging area
+   git add .   (OR)   git add --all
+   
+   git add -A is equivalent to git add --all
+   git add -u is equivalent to git add --update
+   
+   NOTE: Extra information just in case you want to try but not required
+   Command            New-Files        Modified-Files    Deleted-Files                                         Description
+     git add --all            YES                          YES                      YES                       Stage all (new, modified, deleted) files
+     git add .                 YES                          YES                      YES                       Stage all (new, modified, deleted) files in current folder
+     git add -u                NO                          YES                      YES                       Stage modified and deleted files only
+       
+git commit 
+
+Create a new commit containing the current changes of the stagging area (added files and directories)
+We need to give a commit message which we can see in the git log message describing the changes. 
+ # Commit the changes with a message
+     git commit -m "Added new feature"
+     
+git push
+
+git push is a command used to push your local committed changes (after git add and git commit) to a remote repository.
+When you make changes to your local repository and want to share them with others or synchronize them with a remote repository 
+   (such as on GitHub, GitLab, or Bitbucket), you use git push to send those changes to the remote repository.
+
+
+ 
+git pull
+
+git pull is a command used to fetch and merge changes from a remote repository into your local repository.
+When others push changes to the remote repository, you can use git pull to update your local repository to get new commits from the remote repository.
+
+
+Branch
+
+branch is a parallel version of another branch repository.
+It allows multiple developers to work on different versions of files & directories simultaneously, isolating the changes you make from one branch to another branch.
+Every new branch is created from an existing branch, inheriting its history with commits.
+Changes made in a branch remain separate until we manually merge back the changes into the another branch.
+Branches help in isolating changes between multiple developers, ensuring a clean and organized workflow for parallel development.
+Branch related command examples:
+
+To list all the branches in the local repository: git branch
+To create a new branch from current branch: git branch <new_branch> 
+To change the current branch: git checkout <branch_name>
+To create a branch and checkout simultaneously: git checkout -b <new_branch>
+To delete a branch: git branch -d <branch_name>
+To create a new branch from another branch (not the current branch): git branch <new_branch> <source_branch>
+git config
+
+Configure User Information
+Set your name and email, which will be used for commits.
+git config --global user.name "<username>"
+git config --global user.email "<user_email>"
+Set default Editor for Git - messages
+To set vi as the default editor 
+git config --global core.editor "vi"
+To set nano as default editor 
+git config --global core.editor "nano"
+Configure Git to Store Credentials
+Store credentials so you don’t have to enter them repeatedly:
+git config --global credential.helper store
+Temparary cache credentials (valid for 15 minutes by default):
+git config --global credential.helper cache
+If you want to remove credentials permanently:
+git config --global --unset credential.helper
+Enable Colored Output in Git
+git config --global color.ui auto
+Set Up Aliases for Common Commands
+Set Up Aliases for Common Commands
+git config --global alias.st "status"
+git config --global alias.co "checkout"
+git config --global alias.br "branch"
+git config --global alias.cm "commit -m"
+
+Use: 
+git st 
+git co 
+git br 
+Check all global configurations:
+List all global configurations 
+git config --global --list
+
+Revert vs Reset
+
+git reset
+
+History Rewriting: git reset is used to erase commits from the project's history, effectively rewriting the commit history.
+Local Changes: It is commonly used to undo local changes, discarding uncommitted modifications and resetting the staging area and working directory.
+Caution Required: It is a powerful and potentially dangerous command that can permanently delete commits, so it should be used with caution, especially when working with shared repositories.
+git revert
+
+Undo Commit: git revert is used to create a new commit that undoes the changes made by a specific previous commit.
+Preservation of History: Unlike git reset, it does not rewrite history. Instead, it creates a new commit that effectively undoes the changes from the specified commit while preserving the project's commit history.
+Safe Undoing: It is a safer option for reverting changes, especially when working in a shared repository, as it does not alter the existing commit history.
+--hard: uncommit + unstage + delete commits from local repo, nothing left. Need perform a git push --force to apply the same to remote repo
+
+--mixed (default): uncommit + unstage changes, changes are left in working tree.
+
+--soft: uncommit changes, changes are left staged (index).
+
+git merge vs git rebase
+
+Both git merge and rebase are used to combines the changes from one branch into another branch but different approaches to integrating changes from one branch into another in Git
+
+merge 
+  - Merge creates a new commit which shows the changes combined from both branches. 
+  - Merge preserves the history of both branches, so you can see which changes came from which branch.
+  - Merge can sometimes create merge conflicts, we need to discuss with the developers and solve the merge conflicts to complete the merge.
+    (usually merge conflicts occurs if 2 different users try the chagne the same lines in the same file and if we try to merge it)
+
+
+  
+rebase 
+  - Rebase do not creates a new commit that combines the changes from both branches. 
+  - Rebase rewrites the history of the first branch, it will bring all the commits from source branch and place it to the tip of 
+    the destination branch. (Commit history usually will become a linear and cleaner tree)
+  - Rebases do not create merge conflicts, but they can make it difficult to track the history of your repository.  
+
+
+
+pull request (PR)
+
+A pull request (PR) is a proposal to merge changes from one branch into another branch, such as the main or development branch.
+Pull requests are commonly used in platforms like GitHub, GitLab, and Bitbucket providing a user interface for this process.
+In a pull request, collaborators can review and discuss the set of changes made only after approval the PR can be merged.
+Pull requests display the differences, or diffs, between the content in the source branch and the content in the target branch.
+When a developer opens a pull request, they are asking for their changes to be reviewed and integrated into the main codebase. The changes made in the source branch are compared to the target branch, and the differences—called diffs—are displayed, showing the added, removed, or modified lines of code.
+Merge conflict
+
+A merge conflict occurs when two or more developers make changes to the same file and especially the same lines of code in different branches while merging. We get a merge conflict.
+When one person edits a file and another person deletes the same file, a merge conflict occurs. You must resolve all merge conflicts before you can merge a pull request on GitHub, GitLab, Bitbucket, etc.
+git fork 
+
+A Git fork is a copy of an existing repository that allows developers to make changes without affecting the original repository. 
+fork refers to a personal copy of another user's repository.
+To propose changes to someone else's project and when we dont want to change the code in original repo we can fork a repository.
+
+
+Steps to use a fork 
+
+Fork the repository from another account to create a copy of repo in your account (This creates your own server-side copy of another repo from another account).
+Make changes to the fork repo in your account.
+Create a pull request aganist original repository which is for requesting the changes to be merged into the original repository from fork repositry.
