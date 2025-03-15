@@ -72,6 +72,7 @@ git pull
 git pull is a command used to fetch and merge changes from a remote repository into your local repository.
 When others push changes to the remote repository, you can use git pull to update your local repository to get new commits from the remote repository.
 
+******************************************************************************************************************************************************************************************************************
 
 Branch
 
@@ -123,6 +124,8 @@ Check all global configurations:
 List all global configurations 
 git config --global --list
 
+******************************************************************************************************************************************************************************************************************
+
 Revert vs Reset
 
 git reset
@@ -140,6 +143,8 @@ Safe Undoing: It is a safer option for reverting changes, especially when workin
 --mixed (default): uncommit + unstage changes, changes are left in working tree.
 
 --soft: uncommit changes, changes are left staged (index).
+
+******************************************************************************************************************************************************************************************************************
 
 git merge vs git rebase
 
@@ -184,3 +189,5 @@ Steps to use a fork
 Fork the repository from another account to create a copy of repo in your account (This creates your own server-side copy of another repo from another account).
 Make changes to the fork repo in your account.
 Create a pull request aganist original repository which is for requesting the changes to be merged into the original repository from fork repositry.
+
+*****************************************************************************************************************************************************************************************************************
