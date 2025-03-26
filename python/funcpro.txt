@@ -1,0 +1,150 @@
+# Reverse string
+a = "Complex numbers are written with a \"j\" as the imaginary part"
+print(a[::-1])
+
+# swapping two numbers
+x=100
+y=200
+
+x, y = 200, 100
+
+print(x,y)
+
+s = "Knowledge is power" # string
+rev = ' '.join(s.split()[::-1])
+print(rev)
+
+# palindrome # method 1: Using for loop
+s = "malayalam"  # string
+rev = ""  # to store the reversed string
+
+for char in s:
+    rev = char + rev
+
+if s == rev:
+    print("Yes")
+else:
+    print("No")
+
+# method 2 : Using reversed()
+s = "geeks" # string
+rev = ''.join(reversed(s))
+
+if s == rev:
+    print("Yes")
+else:
+    print("No")
+
+
+#method 3 : Using slicing method
+
+s = "malayalam" # string
+
+if s == s[::-1]:
+    print("Yes")
+else:
+    print("No")
+
+# method 4 : Using two pointer technique
+
+s = "malayalam"  # string
+
+i,j = 0, len(s) - 1  # two pointers
+
+is_palindrome = True  # assume palindrome
+while i < j:
+    if s[i] != s[j]:  # mismatch found
+        is_palindrome = False
+        break
+    i += 1
+    j -= 1
+
+if is_palindrome:
+    print("Yes") 
+else:
+    print("No")      
+
+my_list = ["python", 34, 45.3, True, 2j]
+# print(my_list[::-1])
+# list2 = my_list.copy()
+# print(list2)
+my_list.extend(["java",".net"])
+print(my_list)
+
+my_list = ["python", 34, 45.3, True, 2j]
+a = my_list[0] * 2
+my_list.extend(a)
+print(a)
+
+num1 = [1,2]
+num2 = num1
+print(num1 is num2)
+print(id(num1))
+print(id(num2))
+
+def count_upper(string):
+    count = 0
+    for i in string:
+        print(i)
+        if "A" <= i <= "Z":
+            count+=1
+    return count
+
+print(count_upper("HellO"))     
+
+num = int(input("Enter the Number : "))
+
+sum = 0
+for i in range(1,num):
+    if num%i==0:
+        sum+=i
+if num == sum:
+    print(f"{num} is a perfect number")
+else:    
+    print(f"{num} is not a perfect number")
+
+def login(user):
+        id = input("Enter username : ")
+        if id==user:
+            print("Successfully Login")
+        else:
+            print("incorrect username")
+login("Manoj.com")
+
+
+import math
+def fact(x):
+     out = 0
+     for i in x:
+          if isinstance(i, int) and not isinstance(i, bool):
+              out+=math.factorial(i)
+     return out                
+print(fact([5,True,2j,8,9,"Hello"]))   
+
+
+def odd_alpha():
+    st = "Hello, How are you?"
+    out = ""
+    for i in range(len(st)):
+        if i%2!=0:
+            out+=st[i]
+    return out
+print(odd_alpha())
+
+
+def len_col(x):
+    c = 0
+    for i in x:
+        c+=1
+    print(c)
+def sum(*y):
+    lt = []
+    for i in y:
+        if type(i) in [list,str,set,tuple,dict]:
+            lt.append(len_col(i))
+    print(lt)
+
+sum([12,34,55,67],[234,67,899,0])
+
+a = {(2,3,5,6),45,"Hi",}
+print(a)
