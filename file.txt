@@ -12,4 +12,18 @@
 #     if flag == 0:
 #         print("It is prime number")
 #     else:
-#         print("It is not prime number") 
+#         print("It is not prime number")
+
+n = [1,33,24,7,17,23,88,81]
+
+# for i in n:
+#     if i==1:
+#         print(i)
+#     else:
+#         is_prime = True
+#         for k in range(2,i):
+#             if i%k == 0:
+#                 is_prime = False
+#                 break
+#         if is_prime:
+#             print(i) 
