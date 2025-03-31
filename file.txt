@@ -26,4 +26,17 @@ n = [1,33,24,7,17,23,88,81]
 #                 is_prime = False
 #                 break
 #         if is_prime:
-#             print(i) 
+#             print(i)
+
+# Fibonacci Series
+
+# num = int(input("Enter Number : "))
+
+# a,b = 0,1
+# my_list = []
+# # print("Fibonacci Series : ")
+# for i in range(num):
+#     my_list.append(a)
+#     #print(a," ")
+#     a,b = b,a+b 
+# print(f"Fibonacci Series : {my_list}") 
