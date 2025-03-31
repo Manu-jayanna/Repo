@@ -1,0 +1,15 @@
+# Prime numbers :
+
+# n = int(input("Enter number : "))
+# if n==1:
+#     print("It is a prime number")
+# else:
+#     flag = 0
+#     for i in range(2,n):
+#         if n%i==0:
+#             flag = 1
+#             break    
+#     if flag == 0:
+#         print("It is prime number")
+#     else:
+#         print("It is not prime number") 
