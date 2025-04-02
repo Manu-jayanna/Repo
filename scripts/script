@@ -1,0 +1,9 @@
+#!/bin/bash
+
+cost=100
+var_string="Hello, How are you?"
+
+set -x
+echo "Total cost :"
+echo \$$cost
+echo $var_string
