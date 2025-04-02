@@ -1,0 +1,13 @@
+#Custom Notification Systems
+#****************************************************************************************
+#Scenario: Send a desktop or email notification if a specific event happens (e.g., low disk space).
+
+#Use Case: Enhance productivity by automating alerts.
+#***************************************************************************************************
+#!/bin/bash
+
+disk_usage=$(df / | tail -1 | awk '{print $5}' | sed 's/%//')
+if [ $disk_usage -gt 80 ]; then
+    echo "Disk usage is above 80%! Current usage: $disk_usage%" | mail -s "Disk Alert" admin@example.com
+fi
+

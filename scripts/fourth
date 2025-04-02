@@ -1,0 +1,15 @@
+#!/bin/bash
+
+num1=$1
+echo "num1=$num1"
+
+num2=$2
+echo "num2=$num2"
+
+if [ $# -ne 2]; then
+	echo "provide only 2 inputs"
+fi		
+sum=$(($num1+$num2))
+echo "sum=$sum"
+
+echo "Sum of two numbers $num1 and $num2 is $sum"
